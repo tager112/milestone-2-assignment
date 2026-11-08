@@ -87,9 +87,9 @@ main {
     background-color: #6a0dad;
     color: #ffffff;
     text-decoration: none;
-    padding: 12px 24px;
+    padding: 16px 24px;
     margin-top: 8px;
-    border-radius: 4px;
+    border-radius: 8px;
 }
 
 .button:hover {
@@ -169,7 +169,7 @@ footer p {
     }
 
     nav ul {
-        flex-direction: 24px;
+        flex-direction: column;
         gap: 8px;
     }
 
@@ -196,31 +196,4 @@ footer p {
     footer {
         margin-top: 32px;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
