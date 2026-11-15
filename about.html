@@ -19,7 +19,7 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="projects.html">Projects</a></li>
-                <li><a href="about.html">About</a></li>
+                <li><a href="about.html" aria-current="page">About</a></li>
             </ul>
         </nav>
     </header>
@@ -35,12 +35,98 @@
             <h2>My IT Goals</h2>
 
             <p>I want to continue learning about computers, networking, and technology. My goal is to use the skills I learn in school to start a career in IT and continue growing in the field.</p>
+
+            <h2>Contact Me</h2>
+
+            <form id="contact-form" novalidate>
+                <div class="form-group">
+                    <label for="name">Full Name (Required)</label>
+                    <input type="text" id="name" name="name" required aria-describedby="name-error">
+                    <p class="error-message" id="name-error" role="alert" hidden>Please enter your full name.</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address (Required)</label>
+                    <input type="email" id="email" name="email" required aria-describedby="email-error">
+                    <p class="error-message" id="email-error" role="alert" hidden>Please enter a valid email address (including an @ symbol).</p>
+                </div>
+
+                <fieldset class="form-fieldset">
+                    <legend>How should I reply?</legend>
+                    <div class="radio-option">
+                        <input type="radio" id="reply-email" name="reply" value="email" checked>
+                        <label for="reply-email">Email</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="reply-linkedin" name="reply" value="linkedin">
+                        <label for="reply-linkedin">GitHub / Class Message</label>
+                    </div>
+                </fieldset>
+
+                <div class="form-group">
+                    <label for="message">Message (Required)</label>
+                    <textarea id="message" name="message" rows="4" required aria-describedby="message-error"></textarea>
+                    <p class="error-message" id="message-error" role="alert" hidden>Please enter a message before sending.</p>
+                </div>
+
+                <button type="submit" class="button">Send Message</button>
+                <p class="success-message" id="form-success" role="status" hidden>Thanks for reaching out! Your message has been sent.</p>
+            </form>            
         </section>
     </main>
     
     <footer>
-        <p>Tarsh Branch - Milestone 2</p>
+        <p>Tarsh Branch - Milestone 3</p>
     </footer>
-    
-</body>
+
+    <script>
+        const form = document.getElementById('contact-form');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const messageInput = document.getElementById('message');
+
+        const nameError = document.getElementById('name-error');
+        const emailError = document.getElementById('email-error');
+        const messageError = document.getElementById('message-error');
+        const formSuccess = document.getElementById('form-success');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            let isValid = true;
+            formSuccess.hidden = true;
+
+            if (nameInput.value.trim() === '') {
+                nameError.hidden = false;
+                nameInput.setAttribute('aria-invalid', 'true');
+                isValid = false;
+            } else {
+                nameError.hidden = true;
+                nameInput.removeAttribute('aria-invalid');
+            }
+
+            if (emailInput.value.trim() === '' || !emailInput.value.includes('@')) {
+                emailError.hidden = false;
+                emailInput.setAttribute('aria-invalid', 'true');
+                isValid = false;
+            } else {
+                emailError.hidden = true;
+                emailInput.removeAttribute('aria-invalid');
+            }
+
+            if (messageInput.value.trim() === '') {
+                messageError.hidden = false;
+                messageInput.setAttribute('aria-invalid', 'true');
+                isValid = false;
+            } else {
+                messageError.hidden = true;
+                messageInput.removeAttribute('aria-invalid');
+            }
+
+            if (isValid) {
+                formSuccess.hidden = false;
+                form.reset();
+            }
+        });
+    </script>
+</body> 
 </html>
