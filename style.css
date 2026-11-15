@@ -1,3 +1,17 @@
+/* CSS Variables for Color Palette (Lecture 12) */
+
+:root {
+    --primary: #000000;
+    --text-dark: #222222;
+    --accent: #6a0dad;
+    --accent-dark: #4b087a;
+    --accent-light: #c084fc;
+    --neutral: #ffffff;
+    --border-gray: #dddddd;
+    --error: #b30000;
+    --success: #1b5e20;
+}
+
 /* General page styles */
 
 * {
@@ -7,8 +21,8 @@
 body {
     margin: 0;
     font-family: 'Open Sans', sans-serif;
-    background-color: #ffffff;
-    color: #222222;
+    background-color: var(--neutral);
+    color: var(--text-dark);
     line-height: 1.6;
 }
 
@@ -17,11 +31,13 @@ h1, h2, h3 {
 }
 
 h2 {
-    color: #6a0dad;
+    color: var(--accent);
+    margin-top: 0;
     margin-bottom: 16px;
 }
 
 p {
+    margin-top: 0;
     margin-bottom: 16px;
 }
 
@@ -29,10 +45,11 @@ p {
 /* Header and navigation */
 
 header {
-    background-color: #000000;
-    color: #ffffff;
+    background-color: var(--primary);
+    color: var(--neutral);
     padding: 24px;
     text-align: center;
+    border-bottom: 4px solid var(--accent);
 }
 
 header h1 {
@@ -49,13 +66,22 @@ nav ul {
 }
 
 nav a {
-    color: #ffffff;
+    color: var(--neutral);
     text-decoration: none;
+    font-weight: 600;
 }
 
 nav a:hover {
-    color: #c084fc;
+    color: var(--accent-light);
     text-decoration: underline;
+}
+
+nav a:focus-visible,
+.button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
 }
 
 
@@ -69,35 +95,41 @@ main {
 
 .welcome,
 .content-box {
-    background-color: #ffffff;
+    background-color: var(--neutral);
     padding: 32px;
     border-radius: 8px;
-    border: 1px solid #dddddd;
+    border: 1px solid var(--border-gray);
+    border-top: 4px solid var(--accent);
 }
 
-#home-intro {
-    border-top: 4px solid #6a0dad;
+.contact-section {
+    margin-top: 32px;
 }
 
 
-/* Button on the home page */
+/* Button style (used for links and form submit) */
 
 .button {
     display: inline-block;
-    background-color: #6a0dad;
-    color: #ffffff;
+    background-color: var(--accent);
+    color: var(--neutral);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
     text-decoration: none;
     padding: 16px 24px;
     margin-top: 8px;
     border-radius: 8px;
+    border: none;
+    cursor: pointer;
 }
 
 .button:hover {
-    background-color: #4b087a;
+    background-color: var(--accent-dark);
 }
 
 
-/* Project cards using CSS Grid */
+/* Project cards using CSS Grid (Proximity & Similarity) */
 
 .project-grid {
     display: grid;
@@ -107,26 +139,93 @@ main {
 }
 
 .project-card {
-    background-color: #ffffff;
+    background-color: var(--neutral);
     padding: 24px;
     border-radius: 8px;
-    border-top: 4px solid #6a0dad;
-    border-left: 1px solid #dddddd;
-    border-right: 1px solid #dddddd;
-    border-bottom: 1px solid #dddddd; 
+    border-top: 4px solid var(--accent);
+    border-left: 1px solid var(--border-gray);
+    border-right: 1px solid var(--border-gray);
+    border-bottom: 1px solid var(--border-gray); 
 }
 
 .project-card h3 {
-    color: #6a0dad;
+    color: var(--accent);
     margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.project-card p {
+    margin-bottom: 0;
+}
+
+
+/* Accessible Contact Form Styles */
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 8px 16px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    border: 2px solid #555555;
+    border-radius: 8px;
+}
+
+.form-fieldset {
+    border: 2px solid var(--border-gray);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 24px;
+}
+
+legend {
+    font-weight: 600;
+    padding: 0 8px;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.radio-option label {
+    margin-bottom: 0;
+    font-weight: 400;
+}
+
+.error-message {
+    color: var(--error);
+    font-weight: 600;
+    margin-top: 8px;
+    margin-bottom: 0;
+}
+
+.success-message {
+    color: var(--success);
+    font-weight: 600;
+    margin-top: 16px;
+    margin-bottom: 0;
 }
 
 
 /* Footer */
 
 footer {
-    background-color: #000000;
-    color: #ffffff;
+    background-color: var(--primary);
+    color: var(--neutral);
     text-align: center;
     padding: 16px;
     margin-top: 48px;
@@ -190,6 +289,7 @@ footer p {
 
     .button {
         display: block;
+        width: 100%;
         text-align: center;
     }
 
